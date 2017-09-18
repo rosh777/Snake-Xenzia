@@ -3,6 +3,8 @@
 
 #essential game imports
 import pygame, sys, random, time
+pygame.mixer.pre_init(44100,16,2,4096)
+pygame.init()
 
 check_errors = pygame.init()
 if check_errors[1] > 0:
@@ -13,8 +15,13 @@ else:
 
 # Play surface
 playSurface = pygame.display.set_mode((720, 460)) #setting display size
-pygame.display.set_caption('Snake game..!')
+pygame.display.set_caption('==> Snake Game <==')
 # time.sleep(5) #screen will sleep for 5 seconds
+
+#Play background music
+pygame.mixer.music.load("Nagin Been Music.mp3")
+pygame.mixer.music.get_volume()
+pygame.mixer.music.play(-1)
 
 # colours
 red = pygame.Color(255,0,0)    #gameover
@@ -47,7 +54,7 @@ def gameOver():
     playSurface.blit(GOsurf,GOrect)
     showScore(0)
     pygame.display.flip()
-    time.sleep(3)
+    time.sleep(2)
     pygame.quit()   #pygame exit
     sys.exit()  #console exit
 
